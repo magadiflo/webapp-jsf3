@@ -9,43 +9,46 @@
     <meta charset="UTF-8"/>
 </h:head>
 <h:body>
-    <h1>
-        <h:outputText value="#{titulo}"/>
-    </h1>
-    <h:form>
-        <h:commandButton value="Crear producto" action="form.xhtml"/>
-    </h:form>
-    <h:dataTable value="#{listado}" var="prod">
-        <h:column>
-            <f:facet name="header">
-                <h:outputText value="Id"/>
-            </f:facet>
-            <h:outputText value="#{prod.id}"/>
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                <h:outputText value="Nombre"/>
-            </f:facet>
-            <h:outputText value="#{prod.nombre}"/>
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                <h:outputText value="Sku"/>
-            </f:facet>
-            <h:outputText value="#{prod.sku}"/>
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                <h:outputText value="Precio"/>
-            </f:facet>
-            <h:outputText value="#{prod.precio}"/>
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                <h:outputText value="Fecha"/>
-            </f:facet>
-            <h:outputText value="#{prod.fechaRegistro}"/>
-        </h:column>
-    </h:dataTable>
+    <h:panelGrid border="1">
+        <f:facet name="header">
+            <h:outputText value="#{titulo}"/>
+        </f:facet>
+        <h:form id="crearForm">
+            <h:commandButton value="Crear producto" action="form.xhtml"/>
+        </h:form>
+        <h:outputText value="No existen productos en la base de datos!" rendered="#{empty listado}"/>
+        <h:dataTable value="#{listado}" var="prod" rendered="#{not empty listado}">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Id"/>
+                </f:facet>
+                <h:outputText value="#{prod.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre"/>
+                </f:facet>
+                <h:outputText value="#{prod.nombre}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sku"/>
+                </f:facet>
+                <h:outputText value="#{prod.sku}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Precio"/>
+                </f:facet>
+                <h:outputText value="#{prod.precio}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Fecha"/>
+                </f:facet>
+                <h:outputText value="#{prod.fechaRegistro}"/>
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
 </h:body>
 </html>

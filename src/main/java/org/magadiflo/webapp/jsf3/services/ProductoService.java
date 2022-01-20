@@ -13,4 +13,8 @@ public interface ProductoService {
 
     Optional<Producto> porId(Long id);
 
+    void guardar(Producto p);
+
+    void eliminar(Long id);
+
 }

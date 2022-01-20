@@ -50,7 +50,7 @@ public class ProductoController {
 
     public String guardar() {
         System.out.println(this.producto);
-        //service.guardar(producto);
+        this.service.guardar(producto);
         return "index.xhtml?faces-redirect=true"; //si queremos redireccionar
     }
 

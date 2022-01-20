@@ -19,6 +19,9 @@ public class Producto {
     @Column(name = "fecha_registro")
     private LocalDate fechaRegistro;
 
+    @Column(name = "categoria_id")
+    private Long categoriaId = 1L;
+
     public Producto() {
 
     }
@@ -70,6 +73,14 @@ public class Producto {
 
     public void setFechaRegistro(LocalDate fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public Long getCategoriaId() {
+        return categoriaId;
+    }
+
+    public void setCategoriaId(Long categoriaId) {
+        this.categoriaId = categoriaId;
     }
 
     @Override

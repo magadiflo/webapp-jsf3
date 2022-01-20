@@ -9,24 +9,27 @@
     <meta charset="UTF-8"/>
 </h:head>
 <h:body>
-    <h1>
-        <h:outputText value="Formulario producto"/>
-    </h1>
+    <h:panelGrid border="1">
+        <f:facet name="header">
+            <h:outputText value="Formulario producto"/>
+        </f:facet>
+        <h:link outcome="index" value="Volver"/>
 
-    <h:form>
-        <h:panelGrid columns="2">
-            <h:outputLabel value="Nombre" for="nombre"/>
-            <h:inputText id="nombre" value="#{producto.nombre}"/>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nombre" for="nombre"/>
+                <h:inputText id="nombre" value="#{producto.nombre}"/>
 
-            <h:outputLabel value="Precio" for="precio"/>
-            <h:inputText id="precio" value="#{producto.precio}"/>
+                <h:outputLabel value="Precio" for="precio"/>
+                <h:inputText id="precio" value="#{producto.precio}"/>
 
-            <h:outputLabel value="Sku" for="sku"/>
-            <h:inputText id="sku" value="#{producto.sku}"/>
+                <h:outputLabel value="Sku" for="sku"/>
+                <h:inputText id="sku" value="#{producto.sku}"/>
 
-            <h:commandButton value="Crear" action="#{productoController.guardar}"/>
-            <h:inputHidden value="#{producto.id}" />
-        </h:panelGrid>
-    </h:form>
+                <h:commandButton value="Crear" action="#{productoController.guardar}"/>
+                <h:inputHidden value="#{producto.id}" />
+            </h:panelGrid>
+        </h:form>
+    </h:panelGrid>
 </h:body>
 </html>
