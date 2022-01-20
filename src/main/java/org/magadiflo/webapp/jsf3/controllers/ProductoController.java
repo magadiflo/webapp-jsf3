@@ -17,6 +17,8 @@ import java.util.List;
 @Model
 public class ProductoController {
 
+    private Producto producto;
+
     @Inject
     private ProductoService service;
 
@@ -37,6 +39,19 @@ public class ProductoController {
     @Named("listado")
     public List<Producto> findAll() {
         return this.service.listar();
+    }
+
+    @Produces
+    @Model //request + named
+    public Producto producto() {
+        this.producto = new Producto();
+        return this.producto;
+    }
+
+    public String guardar() {
+        System.out.println(this.producto);
+        //service.guardar(producto);
+        return "index.xhtml?faces-redirect=true"; //si queremos redireccionar
     }
 
 }

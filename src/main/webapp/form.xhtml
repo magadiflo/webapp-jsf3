@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Formulario producto</title>
+    <meta charset="UTF-8"/>
+</h:head>
+<h:body>
+    <h1>
+        <h:outputText value="Formulario producto"/>
+    </h1>
+
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Nombre" for="nombre"/>
+            <h:inputText id="nombre" value="#{producto.nombre}"/>
+
+            <h:outputLabel value="Precio" for="precio"/>
+            <h:inputText id="precio" value="#{producto.precio}"/>
+
+            <h:outputLabel value="Sku" for="sku"/>
+            <h:inputText id="sku" value="#{producto.sku}"/>
+
+            <h:commandButton value="Crear" action="#{productoController.guardar}"/>
+            <h:inputHidden value="#{producto.id}" />
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>

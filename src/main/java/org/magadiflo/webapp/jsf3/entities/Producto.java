@@ -27,6 +27,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
+    @PrePersist
+    public void prePersist() {
+        this.fechaRegistro = LocalDate.now();
+    }
+
     public Long getId() {
         return id;
     }

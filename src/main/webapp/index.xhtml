@@ -12,6 +12,9 @@
     <h1>
         <h:outputText value="#{titulo}"/>
     </h1>
+    <h:form>
+        <h:commandButton value="Crear producto" action="form.xhtml"/>
+    </h:form>
     <h:dataTable value="#{listado}" var="prod">
         <h:column>
             <f:facet name="header">

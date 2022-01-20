@@ -21,10 +21,6 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Override
     public Optional<Producto> porId(Long id) {
-        try {
-            return Optional.of(this.repository.porId(id));
-        } catch (Exception e) {
-            return Optional.empty();
-        }
+        return Optional.ofNullable(this.repository.porId(id));
     }
 }
