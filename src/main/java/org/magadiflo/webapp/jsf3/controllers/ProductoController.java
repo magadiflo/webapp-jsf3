@@ -30,7 +30,7 @@ public class ProductoController {
 
     /**
      * Aquí tanto el @RequestScoped y el @Named se puso por separado en vez de usar
-     * @Model, ya que @Model agrupa a ambos. Necesariamente se pone de esta forma ya
+     * @Model, ya que @Model agrupa a ambos. Necesariamente se pone de esta forma, ya
      * que se le dará otro nombre, caso contrario tomaría por defecto el nombre tal
      * cual del método findAll. En nuestro caso se llamará listado
      */
