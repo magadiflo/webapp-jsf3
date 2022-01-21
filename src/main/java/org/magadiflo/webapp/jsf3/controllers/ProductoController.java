@@ -18,6 +18,7 @@ import java.util.List;
 public class ProductoController {
 
     private Producto producto;
+    private Long id;
 
     @Inject
     private ProductoService service;
@@ -45,6 +46,11 @@ public class ProductoController {
     @Model //request + named
     public Producto producto() {
         this.producto = new Producto();
+        if(this.id != null && this.id > 0){
+            this.service.porId(this.id).ifPresent(p -> {
+                this.producto = p;
+            });
+        }
         return this.producto;
     }
 
@@ -54,4 +60,21 @@ public class ProductoController {
         return "index.xhtml?faces-redirect=true"; //si queremos redireccionar
     }
 
+    public String editar(Long id) {
+        this.id = id;
+        return "form.xhtml";
+    }
+
+    public String eliminar(Long id) {
+        this.service.eliminar(id);
+        return "index.xhtml?faces-redirect=true";
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

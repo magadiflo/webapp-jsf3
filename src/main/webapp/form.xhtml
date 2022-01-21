@@ -9,6 +9,9 @@
     <meta charset="UTF-8"/>
 </h:head>
 <h:body>
+    <f:metadata>
+        <f:viewParam name="id" value="#{productoController.id}"/>
+    </f:metadata>
     <h:panelGrid border="1">
         <f:facet name="header">
             <h:outputText value="Formulario producto"/>
@@ -28,6 +31,7 @@
 
                 <h:commandButton value="Crear" action="#{productoController.guardar}"/>
                 <h:inputHidden value="#{producto.id}" />
+
             </h:panelGrid>
         </h:form>
     </h:panelGrid>
