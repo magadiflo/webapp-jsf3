@@ -2,6 +2,7 @@ package org.magadiflo.webapp.jsf3.services;
 
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
+import org.magadiflo.webapp.jsf3.entities.Categoria;
 import org.magadiflo.webapp.jsf3.entities.Producto;
 import org.magadiflo.webapp.jsf3.repositories.CrudRepository;
 
@@ -12,25 +13,38 @@ import java.util.Optional;
 public class ProductoServiceImpl implements ProductoService {
 
     @Inject
-    private CrudRepository<Producto> repository;
+    private CrudRepository<Producto> productoCrudRepository;
+
+    @Inject
+    private CrudRepository<Categoria> categoriaCrudRepository;
 
     @Override
     public List<Producto> listar() {
-        return this.repository.listar();
+        return this.productoCrudRepository.listar();
     }
 
     @Override
     public Optional<Producto> porId(Long id) {
-        return Optional.ofNullable(this.repository.porId(id));
+        return Optional.ofNullable(this.productoCrudRepository.porId(id));
     }
 
     @Override
     public void guardar(Producto p) {
-        this.repository.guardar(p);
+        this.productoCrudRepository.guardar(p);
     }
 
     @Override
     public void eliminar(Long id) {
-        this.repository.eliminar(id);
+        this.productoCrudRepository.eliminar(id);
+    }
+
+    @Override
+    public List<Categoria> listarCategorias() {
+        return this.categoriaCrudRepository.listar();
+    }
+
+    @Override
+    public Optional<Categoria> porIdCategoria(Long id) {
+        return Optional.ofNullable(this.categoriaCrudRepository.porId(id));
     }
 }

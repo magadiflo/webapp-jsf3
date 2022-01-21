@@ -38,6 +38,12 @@
                     <f:passThroughAttribute name="type" value="date"/>
                 </h:inputText>
 
+                <h:outputLabel value="Categoria" for="categoria"/>
+                <h:selectOneMenu id="categoria" value="#{producto.categoria}">
+                    <f:selectItem itemLabel="- Seleccionar -" itemValue="#{null}"/>
+                    <f:selectItems value="#{categorias}" var="cat" itemLabel="#{cat.nombre}" itemValue="#{cat.id}"/>
+                </h:selectOneMenu>
+
                 <h:commandButton value="#{producto.id > 0 ? 'Editar' : 'Crear'}" action="#{productoController.guardar}"/>
                 <h:inputHidden value="#{producto.id}" />
 

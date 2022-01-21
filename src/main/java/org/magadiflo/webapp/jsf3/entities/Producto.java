@@ -19,8 +19,9 @@ public class Producto {
     @Column(name = "fecha_registro")
     private LocalDate fechaRegistro;
 
-    @Column(name = "categoria_id")
-    private Long categoriaId = 1L;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 
     public Producto() {
 
@@ -29,11 +30,6 @@ public class Producto {
     public Producto(String nombre) {
         this.nombre = nombre;
     }
-
-//    @PrePersist
-//    public void prePersist() {
-//        this.fechaRegistro = LocalDate.now();
-//    }
 
     public Long getId() {
         return id;
@@ -75,12 +71,12 @@ public class Producto {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public Long getCategoriaId() {
-        return categoriaId;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCategoriaId(Long categoriaId) {
-        this.categoriaId = categoriaId;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     @Override
@@ -91,6 +87,7 @@ public class Producto {
         sb.append(", precio=").append(precio);
         sb.append(", sku='").append(sku).append('\'');
         sb.append(", fechaRegistro=").append(fechaRegistro);
+        sb.append(", categoria=").append(categoria);
         sb.append('}');
         return sb.toString();
     }

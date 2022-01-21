@@ -5,6 +5,7 @@ import jakarta.enterprise.inject.Model;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.magadiflo.webapp.jsf3.entities.Categoria;
 import org.magadiflo.webapp.jsf3.entities.Producto;
 import org.magadiflo.webapp.jsf3.services.ProductoService;
 
@@ -52,6 +53,12 @@ public class ProductoController {
             });
         }
         return this.producto;
+    }
+
+    @Produces
+    @Model
+    public List<Categoria> categorias() {
+        return this.service.listarCategorias();
     }
 
     public String guardar() {
