@@ -41,7 +41,8 @@
                 <h:outputLabel value="Categoria" for="categoria"/>
                 <h:selectOneMenu id="categoria" value="#{producto.categoria}">
                     <f:selectItem itemLabel="- Seleccionar -" itemValue="#{null}"/>
-                    <f:selectItems value="#{categorias}" var="cat" itemLabel="#{cat.nombre}" itemValue="#{cat.id}"/>
+                    <f:selectItems value="#{categorias}" var="cat" itemLabel="#{cat.nombre}"/>
+                    <f:converter binding="#{categoriaConverter}"/>
                 </h:selectOneMenu>
 
                 <h:commandButton value="#{producto.id > 0 ? 'Editar' : 'Crear'}" action="#{productoController.guardar}"/>
