@@ -31,6 +31,10 @@
         </div>
     </nav>
     <div class="container">
+        <h:messages globalOnly="true" styleClass="alert"
+                    errorClass="alert alert-danger"
+                    infoClass="alert alert-success"
+                    warnClass="alert alert-warning"/>
         <ui:insert name="content" />
         <hr/>
         <footer style="clear: both;">

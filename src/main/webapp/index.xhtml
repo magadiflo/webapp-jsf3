@@ -78,8 +78,8 @@
                         <h:outputText value="Eliminar"/>
                     </f:facet>
                     <h:form id="eliminar">
-                        <h:commandLink value="eliminar" action="#{productoController.eliminar(prod.id)}"
-                                       onclick="return confirm('¿Está seguro que desea eliminar?')"
+                        <h:commandLink value="eliminar" action="#{productoController.eliminar(prod)}"
+                                       onclick="return confirm('¿Está seguro que desea eliminar el producto: #{prod.nombre}?')"
                                        class="btn btn-sm btn-danger"/>
                     </h:form>
                 </h:column>

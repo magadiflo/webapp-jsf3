@@ -3,6 +3,8 @@ package org.magadiflo.webapp.jsf3.controllers;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.inject.Model;
 import jakarta.enterprise.inject.Produces;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.magadiflo.webapp.jsf3.entities.Categoria;
@@ -29,6 +31,9 @@ public class ProductoController {
     public String titulo() {
         return "Hola mundo JavaServer Faces 3.0 (Managed Bean o baking bean)";
     }
+
+    @Inject
+    private FacesContext facesContext;
 
     /**
      * Aquí tanto el @RequestScoped y el @Named se puso por separado en vez de usar
@@ -63,6 +68,11 @@ public class ProductoController {
 
     public String guardar() {
         System.out.println(this.producto);
+        if(producto.getId() != null && producto.getId() > 0){
+            this.facesContext.addMessage(null, new FacesMessage("Producto " + producto.getNombre() + " actualizado con éxito!"));
+        } else {
+            this.facesContext.addMessage(null, new FacesMessage("Producto " + producto.getNombre() + " creado con éxito!"));
+        }
         this.service.guardar(producto);
         return "index.xhtml?faces-redirect=true"; //si queremos redireccionar
     }
@@ -72,8 +82,9 @@ public class ProductoController {
         return "form.xhtml";
     }
 
-    public String eliminar(Long id) {
-        this.service.eliminar(id);
+    public String eliminar(Producto producto) {
+        this.service.eliminar(producto.getId());
+        this.facesContext.addMessage(null, new FacesMessage("Producto "+ producto.getNombre() +" eliminado con éxito!"));
         return "index.xhtml?faces-redirect=true";
     }
 
