@@ -1,6 +1,7 @@
 package org.magadiflo.webapp.jsf3.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
@@ -12,13 +13,23 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "El campo nombre no puede ser vacío!")
     private String nombre;
+
+    @NotNull(message = "El campo precio debe tener un valor!")
+    @Min(5)
+    @Max(100000)
     private Integer precio;
+
+    @NotEmpty
+    @Size(min = 4, max = 10)
     private String sku;
 
+    @NotNull
     @Column(name = "fecha_registro")
     private LocalDate fechaRegistro;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
