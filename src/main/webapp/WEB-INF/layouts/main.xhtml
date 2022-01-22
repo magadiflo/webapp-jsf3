@@ -21,10 +21,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <h:link outcome="index" value="Home" class="nav-link active"/>
+                        <h:link outcome="index" value="#{msg['navbar.texto.inicio']}" class="nav-link active"/>
                     </li>
                     <li class="nav-item">
-                        <h:link outcome="form" value="Crear Producto" class="nav-link"/>
+                        <h:link outcome="form" value="#{msg['navbar.texto.crear']}" class="nav-link"/>
                     </li>
                 </ul>
             </div>
@@ -39,7 +39,7 @@
         <hr/>
         <footer style="clear: both;">
             <h:graphicImage value="/resources/images/jakarta.png"/>
-            <p>Desarrollado por Martín Díaz 2022</p>
+            <p><h:outputText value="#{msg['footer.texto.autor']}"/></p>
             <h:outputScript name="js/bootstrap.bundle.min.js"/>
             <ui:insert name="js"/>
         </footer>
