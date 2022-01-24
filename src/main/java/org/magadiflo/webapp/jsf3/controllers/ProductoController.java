@@ -11,8 +11,8 @@ import org.magadiflo.webapp.jsf3.entities.Categoria;
 import org.magadiflo.webapp.jsf3.entities.Producto;
 import org.magadiflo.webapp.jsf3.services.ProductoService;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * @Model, es un stereotipo que agrupa @Named y @RequestScoped
@@ -29,11 +29,15 @@ public class ProductoController {
     @Produces
     @Model
     public String titulo() {
-        return "Hola mundo JavaServer Faces 3.0 (Managed Bean o baking bean)";
+        return this.bundle.getString("producto.texto.titulo");
     }
 
     @Inject
     private FacesContext facesContext;
+
+    @Inject
+    @Named("msg")
+    private ResourceBundle bundle;
 
     /**
      * Aquí tanto el @RequestScoped y el @Named se puso por separado en vez de usar
@@ -69,9 +73,9 @@ public class ProductoController {
     public String guardar() {
         System.out.println(this.producto);
         if(producto.getId() != null && producto.getId() > 0){
-            this.facesContext.addMessage(null, new FacesMessage("Producto " + producto.getNombre() + " actualizado con éxito!"));
+            this.facesContext.addMessage(null, new FacesMessage(String.format(bundle.getString("producto.mensaje.editar"), producto.getNombre())));
         } else {
-            this.facesContext.addMessage(null, new FacesMessage("Producto " + producto.getNombre() + " creado con éxito!"));
+            this.facesContext.addMessage(null, new FacesMessage(String.format(bundle.getString("producto.mensaje.crear"), producto.getNombre())));
         }
         this.service.guardar(producto);
         return "index.xhtml?faces-redirect=true"; //si queremos redireccionar
@@ -84,7 +88,7 @@ public class ProductoController {
 
     public String eliminar(Producto producto) {
         this.service.eliminar(producto.getId());
-        this.facesContext.addMessage(null, new FacesMessage("Producto "+ producto.getNombre() +" eliminado con éxito!"));
+        this.facesContext.addMessage(null, new FacesMessage(String.format(bundle.getString("producto.mensaje.eliminar"), producto.getNombre())));
         return "index.xhtml?faces-redirect=true";
     }
 
