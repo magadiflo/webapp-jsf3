@@ -61,7 +61,7 @@
                         <h:outputText value="#{msg['producto.boton.editar']}"/>
                     </f:facet>
                     <h:form id="editarForm">
-                        <h:commandLink value="editar" action="#{productoController.editar(prod.id)}"
+                        <h:commandLink value="#{msg['producto.boton.editar']}" action="#{productoController.editar(prod.id)}"
                                        class="btn btn-sm btn-success"/>
                     </h:form>
                 </h:column>
@@ -69,7 +69,7 @@
                     <f:facet name="header">
                         <h:outputText value="#{msg['producto.boton.editar']}"/>
                     </f:facet>
-                    <h:link value="editar get" outcome="form" class="btn btn-sm btn-info">
+                    <h:link value="#{msg['producto.boton.editar']}" outcome="form" class="btn btn-sm btn-info">
                         <f:param name="id" value="#{prod.id}"/>
                     </h:link>
                 </h:column>
@@ -78,7 +78,7 @@
                         <h:outputText value="#{msg['producto.boton.eliminar']}"/>
                     </f:facet>
                     <h:form id="eliminar">
-                        <h:commandLink value="eliminar" action="#{productoController.eliminar(prod)}"
+                        <h:commandLink value="#{msg['producto.boton.eliminar']}" action="#{productoController.eliminar(prod)}"
                                        onclick="return confirm('¿Está seguro que desea eliminar el producto: #{prod.nombre}?')"
                                        class="btn btn-sm btn-danger"/>
                     </h:form>

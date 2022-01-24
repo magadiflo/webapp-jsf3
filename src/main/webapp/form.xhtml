@@ -12,7 +12,7 @@
         </f:metadata>
         <h:panelGrid border="1" class="table">
             <f:facet name="header">
-                <h:outputText value="#{producto.id > 0 ? msg['producto.boton.editar'] : msg['producto.boton.crear']} msg['producto.texto']"/>
+                <h:outputText value="#{producto.id > 0 ? msg['producto.boton.editar'] : msg['producto.boton.crear']} #{msg['producto.texto']}"/>
             </f:facet>
 
             <h:form>
